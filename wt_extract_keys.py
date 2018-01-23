@@ -23,7 +23,7 @@ def main():
             address = item.get_address(version=version)
             privkey = item.get_private_key(version=version)
             addr_tuples.append((address, privkey))
-    for address, privkey in sorted(addr_tuples):
+    for address, privkey in addr_tuples:
         print(address, privkey)
 
 
