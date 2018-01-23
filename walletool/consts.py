@@ -1,6 +1,8 @@
-BITCOIN_ADDRTYPE = 0
-LITECOIN_ADDRTYPE = 48
-NAMECOIN_ADDRTYPE = 52
-TESTNET_ADDRTYPE = 111
-PRIMECOIN_ADDRTYPE = 23
-DOGECOIN_ADDRTYPE = 30
+addrtypes = {
+    'bitcoin': 0,
+    'litecoin': 48,
+    'namecoin': 52,
+    'bitcoin-testnet': 111,
+    'primecoin': 23,
+    'dogecoin': 30,
+}
