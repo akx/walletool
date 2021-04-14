@@ -5,4 +5,5 @@ addrtypes = {
     'bitcoin-testnet': 111,
     'primecoin': 23,
     'dogecoin': 30,
+    'dash': 76,
 }
