@@ -78,7 +78,7 @@ def privkey_to_secret(privkey):
 
 def secret_to_asecret(secret, version):
     prefix = (version + 128) & 255
-    vchIn = bytes([prefix]) + secret
+    vchIn = bytes([prefix]) + secret + bytes([0x1])
     return encode_base58_check(vchIn)
 
 
