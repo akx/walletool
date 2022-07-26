@@ -1,24 +1,24 @@
 import argparse
 from walletool.wallet_files import read_wallet_dat
 from walletool.wallet_items import parse_wallet_dict, KeyWalletItem
-from walletool.consts import addrtypes
+from walletool.consts import addressTypes
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('-d', '--dat', help='wallet.dat path',
                     required=True, dest='filename')
-    ap.add_argument('-v', '--version',
-                    help='address version, as integer, 0xHEX, or any of the following known coins:\n[%s]' % ', '.join(sorted(addrtypes)), required=True)
+    ap.add_argument('-t', '--type',
+                    help='address version, as integer, 0xHEX, or any of the following known coins:\n[%s]' % ', '.join(sorted(addressTypes)), required=True)
     args = ap.parse_args()
     if args.version.startswith('0x'):
         version = int(args.version[2:], 16)
     elif args.version.isdigit():
         version = int(args.version)
     else:
-        if args.version not in addrtypes:
-            raise ValueError('invalid version (see --help)')
-        version = addrtypes[args.version]
+        if args.version not in addressTypes:
+            raise ValueError('invalid type (see --help)')
+        version = addressTypes[args.version]
     w_data = read_wallet_dat(args.filename)
     addr_tuples = []
     for item in parse_wallet_dict(w_data):

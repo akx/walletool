@@ -1,4 +1,4 @@
-addrtypes = {
+addressTypes = {
     'bitcoin': 0,
     'litecoin': 48,
     'namecoin': 52,
