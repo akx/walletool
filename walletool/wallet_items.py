@@ -147,7 +147,8 @@ class WalletItem:
             data.update(parse_BlockLocator(vds))
         elif type == 'ckey':
             data['public_key'] = kds.read_bytes(kds.read_compact_size())
-            data['encrypted_private_key'] = vds.read_bytes(vds.read_compact_size())
+            data['encrypted_private_key'] = vds.read_bytes(
+                vds.read_compact_size())
         elif type == 'mkey':
             data['nID'] = kds.read_uint32()
             data['encrypted_key'] = vds.read_string()

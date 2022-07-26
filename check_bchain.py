@@ -5,6 +5,7 @@ import argparse
 
 var_re = re.compile('var (.+?) = (.+?);')
 
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('file', help='address file; one address per line')
@@ -29,6 +30,7 @@ def main():
         if args.ignore_no_tx and vs['total_tx'] == 0:
             continue
         print(vs)
+
 
 if __name__ == '__main__':
     main()

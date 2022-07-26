@@ -4,6 +4,7 @@ import requests
 import sys
 import time
 
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('file', help='address file; one address per line')
@@ -12,7 +13,8 @@ def main():
     for line in open(args.file):
         line = line.strip()
         while True:
-            r = requests.get('https://dogechain.info/api/v1/address/balance/%s' % line)
+            r = requests.get(
+                'https://dogechain.info/api/v1/address/balance/%s' % line)
             if r.status_code == 429:  # Too Many Requests
                 print('Throttled, hold on...', file=sys.stderr)
                 time.sleep(60)
@@ -25,6 +27,7 @@ def main():
         r['addr'] = line
         print(r)
         time.sleep(0.5)
+
 
 if __name__ == '__main__':
     main()
