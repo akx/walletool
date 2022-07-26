@@ -9,12 +9,11 @@
 * Install python 3.6+
 * Install `requirements.py` by running:
   * `$pip install -r requirements.txt`
-* Your wallet must be **UNENCRYPTED**!
+* Your wallet must be __UNENCRYPTED__!
 
 ## Installation
 
 <!-- - Install the `bsddb3` module (if you're on Windows, use Gohlke's site). -->
-
 
 -----------------------------------------------------------
 
@@ -31,6 +30,7 @@ default location:
 * TODO: Add default location
 
 -----------------------------------------------------------
+
 ### Types / CoinType
 
 * For Bitcoin, run `python3 main.py -d wallet.dat -v 0`
