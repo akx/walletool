@@ -25,9 +25,9 @@ def main():
         version = addressTypes[args.type]
 
     # Start reading wallet information
-    w_data = read_wallet_dat(args.wallet)
+    wallet_data = read_wallet_dat(args.wallet)
     addr_tuples = []
-    for item in parse_wallet_dict(w_data):
+    for item in parse_wallet_dict(wallet_data):
         if isinstance(item, KeyWalletItem):
             address = item.get_address(version=coinType)
             privkey = item.get_private_key(version=coinType)
