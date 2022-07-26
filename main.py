@@ -5,27 +5,27 @@ from walletool.consts import addressTypes
 
 
 def main():
-    
+
     # Parser Arguments
     ap = argparse.ArgumentParser()
     ap.add_argument('-d', '--dat', help='wallet.dat path',
-                    required=True, dest='filename')
+                    required=True, dest='wallet')
     ap.add_argument('-t', '--type',
                     help='address version, as integer, 0xHEX, or any of the following known coins:\n[%s]' % ', '.join(sorted(addressTypes)), required=True)
     args = ap.parse_args()
-    
+
     # Parser Logic - Checking for hex
     if args.type.startswith('0x'):
         coinType = int(args.type[2:], 16)
-    elif args.type.isdigit(): ## Else: Use set addressTypes
+    elif args.type.isdigit():  # Else: Use set addressTypes
         coinType = int(args.type)
     else:
         if args.type not in addressTypes:
             raise ValueError('invalid type (see --help)')
         version = addressTypes[args.type]
-        
+
     # Start reading wallet information
-    w_data = read_wallet_dat(args.filename)
+    w_data = read_wallet_dat(args.wallet)
     addr_tuples = []
     for item in parse_wallet_dict(w_data):
         if isinstance(item, KeyWalletItem):
