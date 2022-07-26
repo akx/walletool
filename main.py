@@ -26,22 +26,28 @@ def main():
 
     # Start reading wallet information
     wallet_data = read_wallet_dat(args.wallet)
-    addr_tuples = []
+    addr_list = ['', '']
     for item in parse_wallet_dict(wallet_data):
         if isinstance(item, KeyWalletItem):
             address = item.get_address(version=coinType)
             privkey = item.get_private_key(version=coinType)
-            addr_tuples.append((address, privkey))
-    for address, privkey in addr_tuples:
-        print(address, privkey)
-        # log = input("Save log of Output? (Y/n): ")
-        # if (log.lower() == "n"):
-        #     print(f'Address: \n{address} \n*2 Private-key: \n{privkey}')
-        # else:
-        #     file_output = open('wallet-output.txt', "w")
-        #     file_output.write()
-        #     print(f'Address: \n{address} \n*2 Private-key: \n{privkey}')
-        #     print()
+            addr_list[0] += address
+            addr_list[1] += privkey
+    
+    # Log address and private key
+    log = input("Save log of Output? (Y/n): ")
+    if (log.lower() == "n"):
+        print(f'\nAddress:\n{addr_list[0]} \n\nPrivate-Key: \n{addr_list[1]}')
+    elif (log.lower() == "y"):
+        file_output = open('wallet-output.txt', "w")
+        file_output.write(f'Address:\n{addr_list[0]} \n\nPrivate-Key: \n{addr_list[1]}')
+        print(f'\nAddress:\n{addr_list[0]} \n\nPrivate-Key: \n{addr_list[1]}')
+        print('\n>> Output saved as {wallet-output.txt}. <<')
+    else:
+        file_output = open('wallet-output.txt', "w")
+        file_output.write(f'Address:\n{addr_list[0]} \n\nPrivate-Key: \n{addr_list[1]}')
+        print('\n>> Output saved as {wallet-output.txt}. <<')
+            
 
 
 if __name__ == '__main__':
