@@ -4,7 +4,7 @@ import os
 
 
 def read_wallet_dat(filename):
-    from bsddb3 import db
+    from berkeleydb import db
     filename = os.path.realpath(filename)
     env = db.DBEnv()
     env.set_lk_detect(db.DB_LOCK_DEFAULT)
