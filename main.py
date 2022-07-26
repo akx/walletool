@@ -11,14 +11,14 @@ def main():
     ap.add_argument('-t', '--type',
                     help='address version, as integer, 0xHEX, or any of the following known coins:\n[%s]' % ', '.join(sorted(addressTypes)), required=True)
     args = ap.parse_args()
-    if args.version.startswith('0x'):
-        version = int(args.version[2:], 16)
-    elif args.version.isdigit():
-        version = int(args.version)
+    if args.type.startswith('0x'):
+        version = int(args.type[2:], 16)
+    elif args.type.isdigit():
+        version = int(args.type)
     else:
-        if args.version not in addressTypes:
+        if args.type not in addressTypes:
             raise ValueError('invalid type (see --help)')
-        version = addressTypes[args.version]
+        version = addressTypes[args.type]
     w_data = read_wallet_dat(args.filename)
     addr_tuples = []
     for item in parse_wallet_dict(w_data):
