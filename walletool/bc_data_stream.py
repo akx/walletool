@@ -1,11 +1,10 @@
 # -- encoding: UTF-8 --
+import struct
 import sys
 
 assert sys.version_info[0] == 3  # TODO: Use six for 2/3 compat
 
 # From Joric's pywallet.
-
-import struct
 
 
 class SerializationError(Exception):
